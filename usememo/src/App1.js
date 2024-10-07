@@ -2,7 +2,7 @@ import {useState, useMemo} from 'react';
 import './App.css';
 
 const hardCalculate=(number)=>{
-  console.log('어려운 계산기');
+  console.log('어려운 계산');
   for (let i=0; i<9999999; i++) {}
   return number + 10000;
 }
@@ -16,6 +16,7 @@ function App() {
   const hardSum = useMemo(()=>{
     return hardCalculate(hardNumber)
   },[hardNumber]);
+/*   const hardSum = hardCalculate(hardNumber); */
   const easySum = easyCalculate(easyNumber);
 
   return (

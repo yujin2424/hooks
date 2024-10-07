@@ -5,11 +5,18 @@ import {useState, useReducer} from 'react';
 //dispatch- state업데이트를 위한 요구
 //action - 요구 내용
 //reducer-  state업데이트 역할
+
+const ACTION_TYPES={
+   deposit:'dkfjekorw',
+   withdraw:'withdraw',
+}
 const reducer = (state, action) =>{
    console.log('reducer가 일을 합니다.',state,  action);
    switch (action.type){
-      case 'deposit':
+      case ACTION_TYPES.deposit:
          return state + action.payload;
+      case ACTION_TYPES.withdraw:
+         return state - action.payload;
       default:
          return state
    }
@@ -27,9 +34,13 @@ function App() {
             step='1000'
           />
           <button onClick={()=>{
-            dispatch({type:'deposit', payload:number})
+            dispatch({type:ACTION_TYPES.deposit, payload:number})
           }}>예금</button>
-          <button>출금</button>
+          <button
+             onClick={()=>{
+               dispatch({type:ACTION_TYPES.withdraw, payload:number})
+            }}
+          >출금</button>
       </div>
    );
 }
